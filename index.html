@@ -23,7 +23,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Tarea </div>
                 </div>
-                <input type="text" class="form-control" id="tarea" placeholder="hacer..." v-model="nuevaTarea">
+                <input type="text" class="form-control" id="tarea" placeholder="hacer..." v-model="nuevaTarea"@keyup.enter="adicionarTarea()">
 
             </div>
             <button class="btn btn-primary mb-3" @click="adicionarTarea()">Guardar</button>

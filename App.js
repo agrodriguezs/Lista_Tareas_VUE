@@ -8,7 +8,7 @@ const App = new Vue({
     },
     created(){
         let datosDB = JSON.parse(localStorage.getItem('tareas-vue'));
-        id (datosDB === null){
+        if(datosDB === null){
             this.tareas = [];
         }else {
             this.tareas = datosDB;
