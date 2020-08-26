@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Lista de Tareas</title>
+</head>
+
+<body>
+
+    <div id="app" class="container mt-3">
+        <h1>{{ titulo }}</h1>
+
+        <div class="form-row align-items-center">
+            <div class="input-group mb-3 col-6">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Tarea </div>
+                </div>
+                <input type="text" class="form-control" id="tarea" placeholder="hacer..." v-model="nuevaTarea">
+
+            </div>
+            <button class="btn btn-primary mb-3" @click="adicionarTarea()">Guardar</button>
+
+        </div>
+        <small v-if="mensajeError" class="text-danger">{{mensajeError}} </small>
+
+
+        <div class="alert col-7 d-flex justify-content-between" :class="tarea.status ? 'alert-success' : 'alert-danger'" role="alert"
+            v-for="(tarea, index) of tareas">
+
+            <div>{{index + 1}} - {{tarea.contenido}} - {{tarea.status}}</div>
+            <div>
+                <button class="btn btn-success btn-sm  mr-2" @click="modificarTarea(index)">OK</button>
+                <button class="btn btn-danger btn-sm  mr-2" @click="eliminarTarea(index)">X</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="App.js"></script>
+</body>
+
+</html>
