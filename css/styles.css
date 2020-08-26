@@ -1,0 +1,8 @@
+.image-small {
+    width: 33px;
+    margin-left: 10px;
+}
+
+.tarea-tachada { 
+    text-decoration: line-through;
+}

@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -19,11 +23,12 @@
         <h1>{{ titulo }}</h1>
 
         <div class="form-row align-items-center">
-            <div class="input-group mb-3 col-6">
+            <div class="input-group mb-3 col-9">
                 <div class="input-group-prepend">
                     <div class="input-group-text">Tarea </div>
                 </div>
-                <input type="text" class="form-control" id="tarea" placeholder="hacer..." v-model="nuevaTarea"@keyup.enter="adicionarTarea()">
+                <input type="text" class="form-control" id="tarea" placeholder="hacer..." v-model="nuevaTarea"
+                    @keyup.enter="adicionarTarea()">
 
             </div>
             <button class="btn btn-primary mb-3" @click="adicionarTarea()">Guardar</button>
@@ -32,19 +37,33 @@
         <small v-if="mensajeError" class="text-danger">{{mensajeError}} </small>
 
 
-        <div class="alert col-7 d-flex justify-content-between" :class="tarea.status ? 'alert-success' : 'alert-danger'" role="alert"
-            v-for="(tarea, index) of tareas">
+        <div class="alert  d-flex justify-content-between"
+            :class="tarea.status ? 'alert-success tarea-tachada' : 'alert-warning'" role="alert"
+            v-for="(tarea, index) of tareas" @click="modificarTarea(index)">
 
-            <div>{{index + 1}} - {{tarea.contenido}}</div>
             <div>
-                <button class="btn btn-success btn-sm  mr-2" @click="modificarTarea(index)">OK</button>
-                <button class="btn btn-danger btn-sm  mr-2" @click="eliminarTarea(index)">X</button>
+                {{index + 1}} - {{tarea.contenido}}
+                <img src="images/cheked2.png" alt="cheked" v-if="tarea.status" class="image-small" />
+            </div>
+
+            <div>
+                <img src="images/equis.png" alt="cheked" class="image-small" @click="eliminarTarea(index)" />
             </div>
         </div>
+
+        <footer class="pie">
+            <div class="alert alert-secondary" role="alert">
+                <a href="https://agrodriguezs.github.io/" target="_blank">Adriana Rodriguez Sanabria.</a>
+                <div class="parrafo">Hecho con VUE y Bootstrap 4 - Lista de Tareas </div>
+            </div>
+
+        </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="App.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
 </body>
 
 </html>

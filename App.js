@@ -33,8 +33,13 @@ const App = new Vue({
          localStorage.setItem('tareas-vue', JSON.stringify(this.tareas));
         },
         eliminarTarea(index){
-          this.tareas.splice(index, 1);
-          localStorage.setItem('tareas-vue', JSON.stringify(this.tareas));
+            var bool=confirm("¿ Seguro de que quieres eliminar la Tarea ?");
+            if(bool){
+                this.tareas.splice(index, 1);
+                localStorage.setItem('tareas-vue', JSON.stringify(this.tareas));
+            } 
+            this.tareas[index].status = !this.tareas[index].status;
+          
         }
     }
 });
