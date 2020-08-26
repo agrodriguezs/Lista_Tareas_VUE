@@ -35,7 +35,7 @@
         <div class="alert col-7 d-flex justify-content-between" :class="tarea.status ? 'alert-success' : 'alert-danger'" role="alert"
             v-for="(tarea, index) of tareas">
 
-            <div>{{index + 1}} - {{tarea.contenido}} - {{tarea.status}}</div>
+            <div>{{index + 1}} - {{tarea.contenido}}</div>
             <div>
                 <button class="btn btn-success btn-sm  mr-2" @click="modificarTarea(index)">OK</button>
                 <button class="btn btn-danger btn-sm  mr-2" @click="eliminarTarea(index)">X</button>
